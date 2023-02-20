@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/frontend/style/index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <section class="page-link">
+        <div>
+          <a href="/frontend/membership-page/membership.html">Membership</a>
+        </div>
+        <div>
+          <a href="/frontend/User-management/user-management.html">User</a>
+        </div>
+      </section>
+    </header>
+    <main>
+      <section class="create-membership-inputs">
+        <label for="firs-name">Firs Name</label><br />
+        <input
+          type="text"
+          name="first-name"
+          id="first-name"
+          placeholder="First Name"
+        />
+        <label for="last-name">Last Name</label>
+        <input
+          type="text"
+          name="last-name"
+          id="last-name"
+          placeholder="Last Name"
+        /><br />
+        <label for="email-input">Email Adress</label><br />
+        <input
+          type="text"
+          name="email-input"
+          id="email-input"
+          placeholder="Email Address"
+        />
+        <br />
+        <label for="change-membership">Change-Membership</label><br />
+        <select name="membership-type" id="membership-type">
+          <option value="1">Trial</option>
+          <option value="1">Silver</option>
+          <option value="1">Bronze</option>
+          <option value="1">Gold</option>
+          <option value="1">Platinum</option>
+        </select>
+        <br />
+        <div class="create-user-button">
+          <button class="cancel-button">Cancel</button>
+          <button class="new-membership-button">New User</button>
+        </div>
+      </section>
+    </main>
+  </body>
+  <footer>Copyright ©2021 Membership Manager</footer>
+</html>
