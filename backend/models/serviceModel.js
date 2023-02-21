@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 const serviceSchema = mongoose.Schema({
   id: {
     type: Number,
-    required: true,
   },
   name: {
     type: String,
