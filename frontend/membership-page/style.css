@@ -5,7 +5,7 @@ body {
 main {
   background-color: rgb(221, 217, 217);
   margin: 30px;
-  padding: 10px 50px;
+  padding: 10px 100px;
 }
 
 .flex-header {
@@ -43,4 +43,14 @@ a {
 footer {
   text-align: center;
   margin-top: 100px;
+}
+
+.card-container {
+  display: grid;
+  grid-template: 200px 200px / auto auto auto;
+  grid-gap: 2rem;
+}
+.msCard {
+  background-color: white;
+  text-align: center;
 }

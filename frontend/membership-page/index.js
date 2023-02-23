@@ -1,4 +1,6 @@
 const membershipDiv = document.querySelector('main');
+const cardContainer = document.createElement('section');
+cardContainer.classList.add('card-container');
 
 const PORT = 'http://127.0.0.1:3000/Memberships';
 
@@ -11,7 +13,7 @@ async function getMemberships() {
       const membershipCard = document.createElement('div');
       membershipCard.classList.add('msCard');
 
-      const priceAndName = document.createElement('h2');
+      const priceAndName = document.createElement('h3');
       priceAndName.textContent = `$${entry.price} ${entry.name}`;
 
       const description = document.createElement('p');
@@ -28,7 +30,8 @@ async function getMemberships() {
 
       deleteTab.append(deleteButton);
       membershipCard.append(priceAndName, description, deleteTab);
-      membershipDiv.append(membershipCard);
+      membershipDiv.append(cardContainer);
+      cardContainer.append(membershipCard);
     });
   } catch (e) {
     console.log(e);
