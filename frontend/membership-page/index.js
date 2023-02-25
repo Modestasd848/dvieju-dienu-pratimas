@@ -27,7 +27,7 @@ async function getMemberships() {
       deleteButton.append(deleteIcon);
 
       let membershipId = entry.id;
-      let membershipUser = entry.user;
+      let membershipUsers = entry.user;
 
       deleteButton.addEventListener('click', () => {
         deleteMembershipCard(membershipId, membershipUsers);

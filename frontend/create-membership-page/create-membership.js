@@ -1,26 +1,24 @@
-const POST_ENDPOINT = 'http://127.0.0.1:3000/Memberships';
-const nameInput = document.querySelector('#name-input');
-const membershipPriceInput = document.querySelector('#membership-price');
-const descriptionInput = document.querySelector('#description-input');
+const div = document.querySelector('.create-membership-container');
+const nameInput = document.querySelector('#name');
+const membershipPriceInput = document.querySelector('#price');
+const descriptionInput = document.querySelector('#description');
 
-document
-  .getElementsByClassName('.new-membership-button')
-  .addEventListener('click', async () => {
-    const name = nameInput.value;
-    const price = membershipPriceInput.value;
-    const description = descriptionInput.value;
+const POST_ENDPOINT = 'http://127.0.0.1:3000/memberships';
 
-    const res = await fetch(POST_ENDPOINT, {
-      method: 'POST',
-      body: JSON.stringify({
-        name,
-        price,
-        description,
-      }),
-      headers: {
-        Content_Type: 'application/json',
-      },
-    });
-    const resData = await res.json();
-    console.log(resData);
+div.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const res = await fetch(PORT, {
+    method: 'POST',
+    headers: {
+      Content_Type: 'application/json',
+    },
+    body: JSON.stringify({
+      name: nameInput.value,
+      price: priceInput.value,
+      description: descriptionInput.value,
+    }),
   });
+  const sentData = await res.json();
+  console.log(JSON.stringify(sentData));
+  window.location.assign('../membership-page/membership.html');
+});
