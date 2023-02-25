@@ -1,4 +1,4 @@
-const membershipDiv = document.querySelector('main');
+const membershipDiv = document.querySelector('#membership-div');
 const cardContainer = document.createElement('section');
 cardContainer.classList.add('card-container');
 
@@ -26,7 +26,12 @@ async function getMemberships() {
       deleteIcon.classList.add('fa', 'fa-trash');
       deleteButton.append(deleteIcon);
 
-      deleteButton.addEventListener('click', () => {});
+      let membershipId = entry.id;
+      let membershipUser = entry.user;
+
+      deleteButton.addEventListener('click', () => {
+        deleteMembershipCard(membershipId, membershipUsers);
+      });
 
       deleteTab.append(deleteButton);
       membershipCard.append(priceAndName, description, deleteTab);
@@ -36,6 +41,22 @@ async function getMemberships() {
   } catch (e) {
     console.log(e);
   }
+}
+
+async function deleteMembershipCard(membershipId, membershipUsers) {
+  if (!membershipUsers.length) {
+    const res = await fetch((PORT = `?id=${membershipId}`), {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await res;
+    console.log(data);
+  } else {
+    alert('You cant delete active users membership');
+  }
+  getMemberships();
 }
 
 getMemberships();
