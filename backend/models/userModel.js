@@ -1,23 +1,23 @@
 import mongoose from 'mongoose';
 
 const userSchema = mongoose.Schema({
-  id: {
-    type: Number,
-  },
   name: {
     type: String,
-    required: true,
     minLength: 3,
+    maxLength: 150,
+    required: true,
   },
   surname: {
     type: String,
+    minLength: 3,
+    maxLength: 150,
+    required: true,
   },
   email: {
     type: String,
+    required: true,
   },
-  service_id: {
-    type: Number,
-  },
+  membershipId: { type: mongoose.Schema.Types.ObjectId, ref: 'memberships' },
 });
 
 const userModel = mongoose.model('users', userSchema);

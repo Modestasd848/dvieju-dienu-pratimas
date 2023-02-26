@@ -1,73 +1,79 @@
-import Service from './models/serviceModel.js';
+import mongoose from 'mongoose';
 import User from './models/userModel.js';
+import Membership from './models/serviceModel.js';
 
 export async function createMembership(req, res) {
   try {
-    const { id, name, price, description } = req.body;
+    const { name, price, description } = req.body;
 
-    const service = {
-      id,
+    const membership = {
       name,
       price,
       description,
     };
 
-    const serviceRes = await Service.create(service);
+    const membershipRes = await Membership.create(membership);
 
-    res.json(serviceRes);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.json(membershipRes);
+  } catch (e) {
+    res.status(500).json({ e });
+  }
+}
+
+export async function createUser(req, res) {
+  try {
+    const { name, surname, email, membershipSelect } = req.body;
+
+    const membershipId = await Membership.findOne({ name: membershipSelect });
+
+    const user = await User.create({
+      name,
+      surname,
+      email,
+      membershipId: mongoose.Types.ObjectId(membershipId),
+    });
+
+    const membership = await Membership.findById(membershipId);
+    membership.users.push(mongoose.Types.ObjectId(user._id));
+    membership.save();
+
+    res.json(user);
+  } catch (e) {
+    res.status(500).json({ e });
   }
 }
 
 export async function getMemberships(req, res) {
   try {
-    const memberships = await Service.find().populate('');
+    const memberships = await Membership.find().populate('users');
 
     res.json(memberships);
-  } catch (error) {
-    console.log(error.message);
-    res.status(500).json({ error: error.message });
+  } catch (e) {
+    res.status(500).json({ e });
+  }
+}
+
+export async function getAllUsers(req, res) {
+  try {
+    const { order } = req.query;
+    const users = await User.find()
+      .populate('membershipId', 'name')
+      .sort({ name: order });
+
+    res.json(users);
+  } catch (e) {
+    res.status(500).json({ e });
   }
 }
 
 export async function deleteMembership(req, res) {
   try {
-    const { id } = req.params;
-    const service = await Service.findByIdAndDelete(id);
-    res.json(service);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-}
+    const { id } = req.query;
 
-// User router
+    const membership = await Membership.findByIdAndDelete(id);
 
-export async function createUser(req, res) {
-  try {
-    const { name, email, surname } = req.body;
-    const user = new User({
-      name,
-      surname,
-      email,
-    });
-    const userRes = await user.save();
-    res.json(userRes);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-}
-
-export async function getUsersOrder(req, res) {
-  try {
-    const order = req.query.order;
-    const typeArr = req.query.typeList;
-
-    const users = await User.find({ type: { $in: typeArr } }).sort({
-      name: order,
-    });
-    res.json(users);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.json(membership);
+  } catch (e) {
+    res.status(500).json({ e });
   }
 }

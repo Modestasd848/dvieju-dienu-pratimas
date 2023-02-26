@@ -4,59 +4,84 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/frontend/style/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body>
     <header>
-      <section class="page-link">
-        <div>
-          <a href="/frontend/membership-page/membership.html">Membership</a>
-        </div>
-        <div>
-          <a href="/frontend/User-management/user-management.html">User</a>
-        </div>
-      </section>
+      <nav class="page-link">
+        <a href="/frontend/membership-page/membership.html">Membership</a>
+        <a href="/frontend/User-management/user-management.html">User</a>
+      </nav>
     </header>
     <main>
-      <section class="create-membership-inputs">
-        <label for="firs-name">Firs Name</label><br />
-        <input
-          type="text"
-          name="first-name"
-          id="first-name"
-          placeholder="First Name"
-        />
-        <label for="last-name">Last Name</label>
-        <input
-          type="text"
-          name="last-name"
-          id="last-name"
-          placeholder="Last Name"
-        /><br />
-        <label for="email-input">Email Adress</label><br />
-        <input
-          type="text"
-          name="email-input"
-          id="email-input"
-          placeholder="Email Address"
-        />
-        <br />
-        <label for="change-membership">Change-Membership</label><br />
-        <select name="membership-type" id="membership-type">
-          <option value="1">Trial</option>
-          <option value="1">Silver</option>
-          <option value="1">Bronze</option>
-          <option value="1">Gold</option>
-          <option value="1">Platinum</option>
-        </select>
-        <br />
+      <p class="font-size">Create User</p>
+      <section class="create-user-container">
+        <div id="grid-wrap">
+          <div>
+            <label for="name">First Name <i class="fa fa-asterisk"></i></label>
+            <br />
+            <input
+              type="text"
+              id="name"
+              placeholder="First Name"
+              required="true"
+            />
+          </div>
+          <div>
+            <label for="surname"
+              >Last Name <i class="fa fa-asterisk"></i
+            ></label>
+            <br />
+            <input
+              type="text"
+              id="surname"
+              placeholder="Last Name"
+              required="true"
+            />
+          </div>
+          <div id="email-div">
+            <label for="email"
+              >Email Address <i class="fa fa-asterisk"></i
+            ></label>
+            <br />
+            <input
+              type="email"
+              id="email"
+              placeholder="Email"
+              required="true"
+            />
+          </div>
+          <div>
+            <label for="membership-select">Change Membership</label>
+            <br />
+            <select id="membership-select">
+              <option value="">--Choose an option--</option>
+            </select>
+          </div>
+        </div>
         <div class="create-user-button">
-          <button class="cancel-button">Cancel</button>
-          <button class="new-membership-button">New User</button>
+          <a
+            class="cancel-button"
+            href="../User-management/user-management.html"
+            >Cancel</a
+          >
+          <button type="submit" class="new-user-button">New Membership</button>
         </div>
       </section>
     </main>
+    <footer>Copyright ©2021 Membership Manager</footer>
+    <script defer src="create-user.js"></script>
   </body>
-  <footer>Copyright ©2021 Membership Manager</footer>
 </html>

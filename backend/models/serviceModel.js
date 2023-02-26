@@ -1,23 +1,26 @@
 import mongoose from 'mongoose';
 
-const serviceSchema = mongoose.Schema({
-  id: {
-    type: Number,
-  },
+const membershipSchema = mongoose.Schema({
   name: {
     type: String,
+    minLength: 3,
+    maxLength: 70,
     required: true,
   },
   price: {
     type: Number,
+    min: 1,
     required: true,
   },
   description: {
     type: String,
+    minLength: 3,
+    maxLength: 400,
     required: true,
   },
+  users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }],
 });
 
-const serviceModel = mongoose.model('services', serviceSchema);
+const membershipModel = mongoose.model('memberships', membershipSchema);
 
-export default serviceModel;
+export default membershipModel;
