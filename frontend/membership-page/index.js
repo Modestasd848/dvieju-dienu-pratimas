@@ -2,7 +2,7 @@ const membershipDiv = document.querySelector('#membership-div');
 const cardContainer = document.createElement('section');
 cardContainer.classList.add('card-container');
 
-const PORT = 'http://127.0.0.1:3000/Memberships';
+const PORT = 'http://127.0.0.1:3000/memberships';
 
 async function getMemberships() {
   try {

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const membershipSchema = mongoose.Schema({
+const serviceSchema = mongoose.Schema({
   name: {
     type: String,
     minLength: 3,
@@ -21,6 +21,6 @@ const membershipSchema = mongoose.Schema({
   users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }],
 });
 
-const membershipModel = mongoose.model('memberships', membershipSchema);
+const serviceModel = mongoose.model('services', serviceSchema);
 
-export default membershipModel;
+export default serviceModel;

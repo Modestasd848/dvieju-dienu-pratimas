@@ -2,7 +2,7 @@ const userDiv = document.querySelector('#users');
 const spanOrder = document.querySelector('#order');
 let order = 'asc';
 
-const PORT = 'http://127:0.0.1:3000/';
+const PORT = 'http://127.0.0.1:3000/';
 
 async function getUsers(order) {
   try {
@@ -23,7 +23,7 @@ async function getUsers(order) {
 
       const membership = document.createElement('h3');
       const membershipSpan = document.createElement('span');
-      membershipSpan.textContent = user.membershipId.name;
+      membershipSpan.textContent = user.name;
       membership.textContent = 'Membership: ';
       membership.append(membershipSpan);
 
