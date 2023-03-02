@@ -26,11 +26,11 @@ async function getMemberships() {
       deleteIcon.classList.add('fa', 'fa-trash');
       deleteButton.append(deleteIcon);
 
-      let membershipId = entry.id;
-      let membershipUsers = entry.user;
-
-      deleteButton.addEventListener('click', () => {
-        deleteMembershipCard(membershipId, membershipUsers);
+      let membershipId = entry._id;
+      let membershipUsers = entry.users;
+      deleteButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        handleDeleteMembership(membershipId, membershipUsers, event.target);
       });
 
       deleteTab.append(deleteButton);
@@ -43,20 +43,22 @@ async function getMemberships() {
   }
 }
 
-async function deleteMembershipCard(membershipId, membershipUsers) {
+async function handleDeleteMembership(membershipId, membershipUsers, target) {
   if (!membershipUsers.length) {
-    const res = await fetch((PORT = `?id=${membershipId}`), {
+    const res = await fetch(PORT + `?id=${membershipId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    const data = await res;
+    const data = await res.json();
     console.log(data);
+    const parent = target.parentElement.parentElement.parentElement;
+    console.log(parent);
+    cardContainer.removeChild(parent);
   } else {
-    alert('You cant delete active users membership');
+    alert('you cannot delete membership that has active users');
   }
-  getMemberships();
 }
 
 getMemberships();

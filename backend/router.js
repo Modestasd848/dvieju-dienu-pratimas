@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.get('/memberships', getMemberships);
 router.post('/memberships', createMembership);
-router.delete('/memberships/:id', deleteMembership);
+router.delete('/memberships', deleteMembership);
 router.post('/users', createUser);
 router.get('/users', getAllUsers);
 export default router;

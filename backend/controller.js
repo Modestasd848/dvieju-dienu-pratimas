@@ -11,7 +11,7 @@ export async function createMembership(req, res) {
       price,
       description,
     };
-
+    console.log(service);
     const serviceRes = await Service.create(service);
 
     res.json(serviceRes);
@@ -70,11 +70,12 @@ export async function getAllUsers(req, res) {
 export async function deleteMembership(req, res) {
   try {
     const { id } = req.query;
-
+    console.log(id);
     const membership = await Service.findByIdAndDelete(id);
 
     res.json(membership);
   } catch (e) {
+    console.log(e);
     res.status(500).json({ e });
   }
 }
