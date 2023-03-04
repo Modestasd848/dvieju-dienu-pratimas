@@ -96,13 +96,22 @@ footer {
 }
 
 .card-container {
-  display: grid;
-  grid-template-rows: 1fr, 1fr, 1fr;
-  /* grid-template-columns: ; */
-  grid-gap: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
 }
 
 .msCard {
+  height: 12rem;
+  width: 31%;
   background-color: white;
   text-align: center;
+}
+
+h3 {
+  padding-top: 10px;
+}
+
+.msCard div {
+  height: 1.3rem;
 }

@@ -36,4 +36,5 @@ form.addEventListener('submit', async (e) => {
   const sentData = await res.json();
   console.log(JSON.stringify(sentData));
   window.location.assign('./user-management.html');
+  console.log(res);
 });

@@ -17,7 +17,7 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  membershipId: { type: mongoose.Schema.Types.ObjectId, ref: 'memberships' },
+  membershipId: { type: mongoose.Schema.Types.ObjectId, ref: 'services' },
 });
 
 const userModel = mongoose.model('users', userSchema);

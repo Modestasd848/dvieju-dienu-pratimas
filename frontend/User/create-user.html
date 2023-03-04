@@ -27,7 +27,7 @@
     </header>
     <main>
       <p class="font-size">Create User</p>
-      <section class="create-user-container">
+      <form class="create-user-container">
         <div id="grid-wrap">
           <div>
             <label for="name">First Name <i class="fa fa-asterisk"></i></label>
@@ -72,16 +72,12 @@
           </div>
         </div>
         <div class="create-user-button">
-          <a
-            class="cancel-button"
-            href="../User-management/user-management.html"
-            >Cancel</a
-          >
-          <button type="submit" class="new-user-button">New Membership</button>
+          <a class="cancel-button" href="./user-management.html">Cancel</a>
+          <button type="submit" class="new-user-button">New User</button>
         </div>
-      </section>
+      </form>
     </main>
     <footer>Copyright ©2021 Membership Manager</footer>
-    <script defer src="create-user.js"></script>
+    <script type="module" src="create-user.js"></script>
   </body>
 </html>

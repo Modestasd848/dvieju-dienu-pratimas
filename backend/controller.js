@@ -26,18 +26,19 @@ export async function createUser(req, res) {
 
     const membershipId = await Service.findOne({ name: membershipSelect });
 
-    const user = await User.create({
+    const user = {
       name,
       surname,
       email,
       membershipId: mongoose.Types.ObjectId(membershipId),
-    });
-
+    };
+    const userRes = await User.create(user);
+    console.log(user);
     const membership = await Service.findById(membershipId);
     membership.users.push(mongoose.Types.ObjectId(user._id));
     membership.save();
 
-    res.json(user);
+    res.json(userRes);
   } catch (e) {
     res.status(500).json({ e });
   }
@@ -60,10 +61,9 @@ export async function getAllUsers(req, res) {
     const users = await User.find()
       .populate('membershipId', 'name')
       .sort({ name: order });
-
     res.json(users);
-  } catch (e) {
-    res.status(500).json({ e });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 }
 
