@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: whitesmoke;
+  background-color: rgb(251, 246, 249);
 }
 
 header {
@@ -28,8 +28,8 @@ nav a.current {
 
 main,
 footer {
-  background-color: rgb(235, 235, 241);
-  padding: 60px 235px;
+  background-color: rgb(241, 241, 249);
+  padding: 60px 240px;
 }
 
 a:focus {
@@ -81,4 +81,28 @@ a:focus {
 footer {
   padding-top: 10rem;
   text-align: center;
+}
+
+#users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.user-card {
+  border: 1px solid rgb(229, 228, 228);
+  width: 30%;
+  text-align: left;
+  padding: 0px 20px;
+  background-color: white;
+}
+
+h4 {
+  color: grey;
+  padding-bottom: 30px;
+}
+
+span {
+  color: #716eeb;
 }

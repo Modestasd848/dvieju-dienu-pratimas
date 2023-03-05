@@ -11,23 +11,24 @@ async function getUsers(order) {
     const userData = await userRes.json();
 
     userData.forEach((user) => {
-      const fullName = document.createElement('h3');
+      const fullName = document.createElement('h4');
       fullName.textContent = `${user.name} ${user.surname}`;
       fullName.classList.add('fullname');
 
-      const email = document.createElement('h3');
+      const email = document.createElement('p');
       const emailSpan = document.createElement('span');
       emailSpan.textContent = user.email;
       email.textContent = 'Email Address: ';
       email.append(emailSpan);
 
-      const membership = document.createElement('h3');
+      const membership = document.createElement('p');
       const membershipSpan = document.createElement('span');
       membershipSpan.textContent = user.name;
       membership.textContent = 'Membership: ';
       membership.append(membershipSpan);
 
       const userCard = document.createElement('div');
+      userCard.classList.add('user-card');
       userCard.append(fullName, email, membership);
       userDiv.append(userCard);
     });
